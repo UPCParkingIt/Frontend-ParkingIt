@@ -1,10 +1,12 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../iam/services/authentication.service';
 import {NgOptimizedImage} from '@angular/common';
 import {MatToolbar} from '@angular/material/toolbar';
-import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
-import {MatIcon} from '@angular/material/icon';
+import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import {UserService} from '../../../iam/services/user.service';
+import {MatIconButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-pi-toolbar',
@@ -13,17 +15,33 @@ import {MatIcon} from '@angular/material/icon';
     MatToolbar,
     MatMenuTrigger,
     MatIcon,
-    MatMenu
+    MatIconModule,
+    MatMenu,
+    MatIconButton,
+    MatMenuItem
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
   isDropdownOpen = false;
-  userName = 'Usuario Ejemplo';
-  userEmail = 'usuario@ejemplo.com';
+  userId: any;
+  userFirstName = '';
+  userLastName = '';
+  userEmail = '';
 
-  constructor(private router: Router, private authService: AuthenticationService) {}
+  constructor(private router: Router, private authService: AuthenticationService, private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.currentUserId.subscribe(id => {
+      this.userId = id;
+      this.userService.getById(this.userId).subscribe(user => {
+        this.userFirstName = user.firstName;
+        this.userLastName = user.lastName;
+        this.userEmail = user.email;
+      });
+    });
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
