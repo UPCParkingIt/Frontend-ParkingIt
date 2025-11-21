@@ -34,21 +34,24 @@ export class SignUpComponent extends BaseFormComponent implements OnInit {
       phoneNumber: [''],
       profilePhotoUrl: [''],
       dniNumber: [''],
-      roles: [[]]
+      roles: [['USER_ROLE']]
     });
   }
 
   onSubmit() {
     if (this.form.invalid) return;
-    let email = this.form.value.email;
-    let password = this.form.value.password;
-    let firstName = this.form.value.firstName;
-    let lastName = this.form.value.lastName;
-    let phoneNumber = this.form.value.phoneNumber;
-    let profilePhotoUrl = this.form.value.profilePhotoUrl;
-    let dniNumber = this.form.value.dniNumber;
-    let roles = this.form.value.roles;
-    const signUpRequest = new SignUpRequest(email, password, firstName, lastName, phoneNumber, profilePhotoUrl, dniNumber, roles);
+    const value = { ...this.form.value };
+    value.roles = Array.isArray(value.roles) ? value.roles : [value.roles];
+    const signUpRequest = new SignUpRequest(
+      value.email,
+      value.password,
+      value.firstName,
+      value.lastName,
+      value.phoneNumber,
+      value.profilePhotoUrl,
+      value.dniNumber,
+      value.roles
+    );
     this.authenticationService.signUp(signUpRequest);
     this.submitted = true;
   }

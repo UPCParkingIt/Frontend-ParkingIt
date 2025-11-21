@@ -46,6 +46,8 @@ export class AuthenticationService {
         },
         error: (error) => {
           console.error(`Error while signing up: ${error}`);
+          console.error('Status:', error?.status);
+          console.error('Response body:', error?.error);
           this.router.navigate(['/sign-up']).then();
         }
       });

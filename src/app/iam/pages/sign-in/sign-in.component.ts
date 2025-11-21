@@ -4,13 +4,15 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {AuthenticationService} from '../../services/authentication.service';
 import {SignInRequest} from '../../model/sign-in.request';
 import {NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   imports: [
     FormsModule,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
@@ -37,5 +39,6 @@ export class SignInComponent extends BaseFormComponent implements OnInit {
     const signInRequest = new SignInRequest(email, password);
     this.authenticationService.signIn(signInRequest);
     this.submitted = true;
+
   }
 }
