@@ -1,0 +1,119 @@
+.toolbar {
+  background-color: #00000019;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.toolbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.toolbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.toolbar-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.toolbar-user {
+  position: relative;
+}
+
+.user-button {
+  background-color: #69E7CE;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.user-button:hover {
+  background-color: #5DD4BC;
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border-radius: 0 0 8px 8px;
+}
+
+.logout-button:hover {
+  background-color: #69E7CE;
+  color: #000;
+}
+
+.logout-button svg {
+  flex-shrink: 0;
+}

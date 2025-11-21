@@ -1,0 +1,29 @@
+<mat-toolbar class="toolbar">
+  <div class="toolbar-container">
+    <div class="toolbar-logo">
+      <img
+        ngSrc="assets/logo.png"
+        alt="ParkingIt Logo"
+        width="40"
+        height="40">
+      <span>ParkingIt</span>
+    </div>
+
+    <div class="toolbar-user">
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-button">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <mat-menu #userMenu="matMenu" class="user-dropdown">
+        <div class="dropdown-header" (click)="$event.stopPropagation()">
+          <p class="user-name">{{ userName }}</p>
+          <p class="user-email">{{ userEmail }}</p>
+        </div>
+        <button mat-menu-item (click)="logout()" class="logout-button">
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar Sesión</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

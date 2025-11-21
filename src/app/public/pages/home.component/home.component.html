@@ -1,0 +1,85 @@
+<app-pi-toolbar></app-pi-toolbar>
+
+<div class="home-container">
+  <!-- Sección de Bienvenida y Saldo -->
+  <div class="header-section">
+    <h1>Bienvenido!</h1>
+    <mat-card class="wallet-card">
+      <mat-card-content>
+        <span class="wallet-label">Wallet: S/</span>
+        <span class="wallet-amount">0.00</span>
+        <button mat-icon-button>
+          <mat-icon>account_balance_wallet</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="content-section">
+    <!-- Sección de Notificaciones -->
+    <mat-card class="notifications-card">
+      <mat-card-header>
+        <mat-card-title>
+          Notifications
+          <button mat-icon-button>
+            <mat-icon>calendar_today</mat-icon>
+          </button>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="no-notifications">Nothing for today...</p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Sección de Reservación -->
+    <mat-card class="reservation-card">
+      <mat-card-header>
+        <mat-card-title>Reservation</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Ubicación -->
+        <div class="form-field">
+          <label>Ubication:</label>
+          <mat-form-field appearance="fill">
+            <mat-select placeholder="Surco - Av.........">
+              <mat-option value="location1">Surco - Av.........</mat-option>
+              <mat-option value="location2">Miraflores - Av.........</mat-option>
+              <mat-option value="location3">San Isidro - Av.........</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Fecha -->
+        <div class="form-field">
+          <label>Date:</label>
+          <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="picker" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- Hora -->
+        <div class="form-field">
+          <label>Time:</label>
+          <mat-form-field appearance="fill">
+            <input matInput type="time" value="07:00">
+            <mat-icon matSuffix>schedule</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Horas -->
+        <div class="form-field">
+          <label>Hours:</label>
+          <mat-form-field appearance="fill">
+            <input matInput type="text" value="+1:00 h">
+            <mat-icon matSuffix>hourglass_empty</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Botón Consultar -->
+        <button mat-raised-button class="consult-button">Consult</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
