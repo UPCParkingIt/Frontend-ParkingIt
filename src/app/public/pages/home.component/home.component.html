@@ -1,3 +1,4 @@
+<script src="home.component.ts"></script>
 <app-pi-toolbar></app-pi-toolbar>
 
 <div class="home-container">
@@ -31,45 +32,57 @@
         <mat-card-title>Nueva Reservación</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div class="form-field">
-          <label>Ubicación:</label>
-          <mat-form-field appearance="fill">
-            <mat-select placeholder="Surco - Av.........">
-              <mat-option value="location1">Surco - Av.........</mat-option>
-              <mat-option value="location2">Miraflores - Av.........</mat-option>
-              <mat-option value="location3">San Isidro - Av.........</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+        <div class="reservation-layout">
+          <!-- Calendario a la izquierda -->
+          <div class="calendar-section">
+            <mat-calendar
+              [dateFilter]="dateFilter"
+              [dateClass]="dateClass"
+              [(selected)]="selectedDate">
+            </mat-calendar>
+          </div>
 
-        <div class="form-field">
-          <label>Fecha de la reservación:</label>
-          <mat-form-field appearance="fill">
-            <input matInput [matDatepicker]="picker" placeholder="Select date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
+          <!-- Formulario a la derecha -->
+          <div class="form-section">
+            <div class="form-field">
+              <label>Ubicación:</label>
+              <mat-form-field appearance="fill">
+                <mat-select [(value)]="selectedLocation" placeholder="Surco - Av.........">
+                  <mat-option value="location1">Surco - Av.........</mat-option>
+                  <mat-option value="location2">Miraflores - Av.........</mat-option>
+                  <mat-option value="location3">San Isidro - Av.........</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-        <div class="form-field">
-          <label>Hora:</label>
-          <mat-form-field appearance="fill">
-            <input matInput type="time" value="07:00">
-            <mat-icon matSuffix>schedule</mat-icon>
-          </mat-form-field>
-        </div>
+            <div class="form-field">
+              <label>Fecha de la reservación:</label>
+              <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" placeholder="Select date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
 
-        <!-- Horas -->
-        <div class="form-field">
-          <label>Cantidad de horas:</label>
-          <mat-form-field appearance="fill">
-            <input matInput type="text" value="+1:00 h">
-            <mat-icon matSuffix>hourglass_empty</mat-icon>
-          </mat-form-field>
-        </div>
+            <div class="form-field">
+              <label>Hora:</label>
+              <mat-form-field appearance="fill">
+                <input matInput type="time" [(ngModel)]="selectedTime">
+                <mat-icon matSuffix>schedule</mat-icon>
+              </mat-form-field>
+            </div>
 
-        <!-- Botón Consultar -->
-        <button mat-raised-button class="consult-button">Consult</button>
+            <div class="form-field">
+              <label>Cantidad de horas:</label>
+              <mat-form-field appearance="fill">
+                <input matInput type="number" [(ngModel)]="durationHours" min="1" max="24">
+                <mat-icon matSuffix>hourglass_empty</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <button mat-raised-button class="consult-button" (click)="createReservation()">Reservar</button>
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
