@@ -39,6 +39,5 @@ export class SignInComponent extends BaseFormComponent implements OnInit {
     const signInRequest = new SignInRequest(email, password);
     this.authenticationService.signIn(signInRequest);
     this.submitted = true;
-
   }
 }

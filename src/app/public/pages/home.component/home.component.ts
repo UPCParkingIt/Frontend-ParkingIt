@@ -22,7 +22,7 @@ import {ReservationService} from '../../../reservations/services/reservation.ser
 import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-home.component',
+  selector: 'app-home',
   imports: [
     ToolbarComponent,
     MatCard,

@@ -70,7 +70,7 @@ export class AuthenticationService {
           this.signedInRoles.next(response.roles);
           localStorage.setItem('token', response.token);
           console.log(`Signed in as ${response.email} with token ${response.token}`);
-          this.router.navigate(['/home']).then();
+          this.router.navigate(['/user/home']).then();
         },
         error: (error) => {
           console.error(`Error while signing in: ${error}`);

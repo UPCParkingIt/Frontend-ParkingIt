@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {AuthenticationService} from "../../services/authentication.service";
 import {SignUpRequest} from "../../model/sign-up.request";
 import {NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +21,11 @@ export class SignUpComponent extends BaseFormComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
 
-  constructor(private builder: FormBuilder, private authenticationService: AuthenticationService) {
+  constructor(
+    private builder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
     super();
   }
 
@@ -54,5 +58,9 @@ export class SignUpComponent extends BaseFormComponent implements OnInit {
     );
     this.authenticationService.signUp(signUpRequest);
     this.submitted = true;
+  }
+
+  goToDriverHome(): void {
+    this.router.navigate(['/driver/home']);
   }
 }
