@@ -1,7 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../iam/services/authentication.service';
-import {NgOptimizedImage} from '@angular/common';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
@@ -11,7 +10,6 @@ import {MatIconButton} from '@angular/material/button';
 @Component({
   selector: 'app-pi-toolbar',
   imports: [
-    NgOptimizedImage,
     MatToolbar,
     MatMenuTrigger,
     MatIcon,

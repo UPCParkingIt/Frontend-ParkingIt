@@ -1,0 +1,44 @@
+<app-driver-toolbar></app-driver-toolbar>
+
+<div class="page-wrapper">
+  <div class="exit-container">
+    <div class="exit-card">
+      <h1>Resumen de Estadía</h1>
+
+      <div class="info-section">
+        <div class="info-item">
+          <span class="label">Código de Vehículo:</span>
+          <span class="value">{{ vehicleCode }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Hora de Entrada:</span>
+          <span class="value">{{ entryTime }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="label">Hora Actual:</span>
+          <span class="value">{{ currentTime }}</span>
+        </div>
+
+        <div class="info-item highlight">
+          <span class="label">Tiempo Total:</span>
+          <span class="value">{{ totalHours }} horas</span>
+        </div>
+
+        <div class="info-item highlight">
+          <span class="label">Monto a Pagar:</span>
+          <span class="value">S/. {{ totalAmount }}</span>
+        </div>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="pay-button"
+        (click)="onPayClick()">
+        Proceder al Pago
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,3 @@
 export const environment = {
-  serverBasePath: 'https://backend-parkingit.onrender.com/api/v1'
+  serverBasePath: 'https://parking-it-api-cwk52.ondigitalocean.app/api/v1'
 };

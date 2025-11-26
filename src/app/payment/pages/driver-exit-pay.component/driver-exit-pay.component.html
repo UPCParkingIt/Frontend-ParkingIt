@@ -1,0 +1,39 @@
+<app-driver-toolbar></app-driver-toolbar>
+
+<div class="page-wrapper">
+  <div class="payment-container">
+    <div class="payment-card">
+      <h1>Realizar Pago</h1>
+
+      <div class="amount-section">
+        <span class="amount-label">Monto Total:</span>
+        <span class="amount-value">S/. {{ totalAmount }}</span>
+      </div>
+
+      <div class="qr-section">
+        <div class="qr-code">
+          <img src="assets/qr-code.png" alt="Código QR" class="qr-image">
+        </div>
+        <p class="qr-instruction">Escanea el código QR para pagar</p>
+      </div>
+
+      <div class="payment-buttons">
+        <button
+          mat-raised-button
+          class="payment-method-button apple-pay"
+          (click)="onApplePayClick()">
+          <span class="button-icon">🍎</span>
+          Pagar con Apple Pay
+        </button>
+
+        <button
+          mat-raised-button
+          class="payment-method-button google-pay"
+          (click)="onGooglePayClick()">
+          <span class="button-icon">G</span>
+          Pagar con Google Pay
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

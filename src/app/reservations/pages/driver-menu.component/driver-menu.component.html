@@ -1,0 +1,26 @@
+<div class="page-wrapper">
+  <div class="menu-container">
+    <div class="left-section">
+      <div class="section-card">
+        <h2>Ingresar con Código de Reservación</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Código de Reservación</mat-label>
+          <input matInput [(ngModel)]="reservationCode" placeholder="Ingrese el código">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onReservationCodeSubmit()">
+          Verificar
+        </button>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="section-card">
+        <h2>Ingreso Manual</h2>
+        <p>Complete el formulario manualmente</p>
+        <button mat-raised-button color="accent" (click)="onManualEntry()">
+          Ingresar Manualmente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
