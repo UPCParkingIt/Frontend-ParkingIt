@@ -12,14 +12,14 @@ export class RecognitionProcessService extends BaseService<boolean>{
   }
 
   getProcessStatus(){
-    return this.http.get<boolean>(`${this.basePath}/status`, this.httpOptions);
+    return this.http.get<boolean>(`${this.basePath}${this.resourceEndpoint}/status`, this.httpOptions);
   }
 
   activateProcess(){
-    return this.http.post(`${this.basePath}/activate`, {}, this.httpOptions)
+    return this.http.post(`${this.basePath}${this.resourceEndpoint}/activate`, {}, this.httpOptions)
   }
 
   deactivateProcess(){
-    return this.http.delete(`${this.basePath}/deactivate`, this.httpOptions);
+    return this.http.delete(`${this.basePath}${this.resourceEndpoint}/deactivate`, this.httpOptions);
   }
 }

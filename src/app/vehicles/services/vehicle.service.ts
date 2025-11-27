@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseService} from '../../shared/services/base.service';
 import { VehicleEntity } from "../model/vehicle.entity";
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class VehicleService extends BaseService<VehicleEntity>{
     this.resourceEndpoint = '/vehicles';
   }
 
-  getLastVehicle(){
-    return this.http.get<VehicleEntity>(`${this.basePath}/last`, this.httpOptions);
+  getLastVehicle(): Observable<VehicleEntity>{
+    return this.http.get<VehicleEntity>(`${this.basePath}${this.resourceEndpoint}/last`, this.httpOptions);
   }
 }

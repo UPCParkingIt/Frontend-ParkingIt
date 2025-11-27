@@ -1,6 +1,6 @@
 export interface VehicleEntity {
   id: number;
-  licensePlate: string;
+  licensePlateNumber: string;
   type: string;
   status: string;
   color: string;
