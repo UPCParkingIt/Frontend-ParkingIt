@@ -1,0 +1,41 @@
+<div class="driver-info-wrapper" *ngIf="!isLoading">
+  <mat-card class="driver-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="header-content">
+          <span>Información del Conductor</span>
+          <mat-icon [class.verified]="isVerified" [class.pending]="!isVerified">
+            {{ isVerified ? 'verified_user' : 'pending' }}
+          </mat-icon>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!--<div class="info-row">
+        <mat-icon class="info-icon">person</mat-icon>
+        <div class="info-content">
+          <span class="info-label">Conductor:</span>
+          <span class="info-value">{{ vehicle?. || 'Juan Pérez' }}</span>
+        </div>
+      </div>-->
+
+      <div class="info-row">
+        <mat-icon class="info-icon">directions_car</mat-icon>
+        <div class="info-content">
+          <span class="info-label">Placa:</span>
+          <span class="info-value">{{ vehicle?.licensePlate || 'N/A' }}</span>
+        </div>
+      </div>
+
+      <div class="verification-status" [class.verified]="isVerified">
+        <mat-icon>{{ isVerified ? 'check_circle' : 'hourglass_empty' }}</mat-icon>
+        <span>{{ isVerified ? 'Identidad Verificada' : 'Verificando identidad...' }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="loading-wrapper" *ngIf="isLoading">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>

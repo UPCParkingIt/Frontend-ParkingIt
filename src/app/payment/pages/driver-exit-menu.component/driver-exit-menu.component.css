@@ -5,6 +5,14 @@
   min-height: calc(100vh - 64px);
   background: linear-gradient(135deg, #e8f5f2 0%, #d4e9e6 100%);
   padding: 24px;
+  position: relative;
+}
+
+.driver-info-top-right {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
 }
 
 .exit-container {

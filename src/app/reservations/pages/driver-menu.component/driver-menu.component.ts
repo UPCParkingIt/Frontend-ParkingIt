@@ -14,6 +14,7 @@ import {
 import {
   ReservationErrorDialog
 } from '../../components/reservation-error-modal.component/reservation-error-modal.component';
+import {DriverInfoComponent} from '../../../vehicles/components/driver-info.component/driver-info.component';
 
 @Component({
   selector: 'app-driver-menu',
@@ -21,7 +22,8 @@ import {
     MatLabel,
     MatFormField,
     FormsModule,
-    DriverToolbarComponent
+    DriverToolbarComponent,
+    DriverInfoComponent
   ],
   templateUrl: './driver-menu.component.html',
   styleUrl: './driver-menu.component.css',

@@ -3,11 +3,13 @@ import {
   DriverToolbarComponent
 } from '../../../recognition/components/driver-toolbar.component/driver-toolbar.component';
 import {Router} from '@angular/router';
+import {DriverInfoComponent} from '../../../vehicles/components/driver-info.component/driver-info.component';
 
 @Component({
   selector: 'app-driver-exit-menu.component',
   imports: [
-    DriverToolbarComponent
+    DriverToolbarComponent,
+    DriverInfoComponent
   ],
   templateUrl: './driver-exit-menu.component.html',
   styleUrl: './driver-exit-menu.component.css',
