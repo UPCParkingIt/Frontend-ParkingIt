@@ -21,6 +21,8 @@ export class DriverExitMenuComponent implements OnInit {
   totalHours: number = 6.25;
   totalAmount: number = 25.00;
 
+  isIdentityVerified: boolean = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -34,5 +36,9 @@ export class DriverExitMenuComponent implements OnInit {
 
   onPayClick(): void {
     this.router.navigate(['/driver/exit/pay']);
+  }
+
+  onVerificationChange(isVerified: boolean): void {
+    this.isIdentityVerified = isVerified;
   }
 }

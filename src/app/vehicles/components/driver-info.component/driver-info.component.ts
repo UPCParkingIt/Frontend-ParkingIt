@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {VehicleEntity} from '../../model/vehicle.entity';
 import {interval, Subscription, switchMap} from 'rxjs';
 import {VehicleService} from '../../services/vehicle.service';
@@ -27,6 +27,8 @@ export class DriverInfoComponent implements OnInit, OnDestroy {
   isVerified: boolean = false;
   isLoading: boolean = true;
   private statusSubscription?: Subscription;
+
+  @Output() verificationStatusChange = new EventEmitter<boolean>();
 
   constructor(
     private vehicleService: VehicleService,
@@ -65,10 +67,12 @@ export class DriverInfoComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (status) => {
           this.isVerified = status;
+          this.verificationStatusChange.emit(this.isVerified);
         },
         error: (error) => {
           console.error('Error al verificar estado:', error);
           this.isVerified = false;
+          this.verificationStatusChange.emit(false);
         }
       });
   }

@@ -2,7 +2,7 @@
 
 <div class="page-wrapper">
   <div class="driver-info-top-right">
-    <app-driver-info></app-driver-info>
+    <app-driver-info (verificationStatusChange)="onVerificationChange($event)"></app-driver-info>
   </div>
 
   <div class="exit-container">
@@ -36,8 +36,9 @@
         mat-raised-button
         color="primary"
         class="pay-button"
+        [disabled]="!isIdentityVerified"
         (click)="onPayClick()">
-        Proceder al Pago
+        {{ isIdentityVerified ? 'Proceder al Pago' : 'Verificando Identidad...' }}
       </button>
     </div>
   </div>
