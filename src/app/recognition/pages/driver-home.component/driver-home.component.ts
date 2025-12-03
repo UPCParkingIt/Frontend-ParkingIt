@@ -16,7 +16,7 @@ export class DriverHomeComponent {
   onStartClick(): void {
     const windowFeatures = 'width=800,height=600,toolbar=no,menubar=no,location=no';
     const newWindow = window.open(
-      'http://172.20.10.3/control?var=face_enroll&val=1',
+      'http://192.168.100.115/control?var=face_enroll&val=1',
       '_blank',
       windowFeatures
     );
