@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from '../../shared/services/base.service';
-import {ReservationEntity} from '../model/reservation.entity';
+import {ReservationEntity} from '../../reservations/model/reservation.entity';
 import {HttpClient} from '@angular/common/http';
 import {catchError, retry} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReservationService extends BaseService<ReservationEntity> {
+export class NotificationService extends BaseService<ReservationEntity> {
   constructor(http: HttpClient) {
     super(http);
-    this.resourceEndpoint = '/reservations';
+    this.resourceEndpoint = '/notifications';
   }
 
-  getAllReservationsByUserId(userId: string) {
-    return this.http.get<ReservationEntity>(`${this.basePath}${this.resourceEndpoint}/users/${userId}`, this.httpOptions)
+  getAllNotificationsByUserId(userId: string) {
+    return this.http.get<ReservationEntity>(`${this.basePath}/users/${userId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatLabel} from '@angular/material/form-field';
 import {MatFormField} from '@angular/material/form-field';
 import {Router} from '@angular/router';
@@ -15,12 +15,17 @@ import {
   ReservationErrorDialog
 } from '../../components/reservation-error-modal.component/reservation-error-modal.component';
 import {DriverInfoComponent} from '../../../vehicles/components/driver-info.component/driver-info.component';
+import {AuthenticationService} from '../../../iam/services/authentication.service';
+import {MatInput} from '@angular/material/input';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-driver-menu',
   imports: [
     MatLabel,
     MatFormField,
+    MatInput,
+    MatButton,
     FormsModule,
     DriverToolbarComponent,
     DriverInfoComponent
@@ -28,14 +33,22 @@ import {DriverInfoComponent} from '../../../vehicles/components/driver-info.comp
   templateUrl: './driver-menu.component.html',
   styleUrl: './driver-menu.component.css',
 })
-export class DriverMenuComponent {
+export class DriverMenuComponent implements OnInit {
   reservationCode: string = '';
+  userId: string = '';
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private authenticationService: AuthenticationService
   ) {}
+
+  ngOnInit(): void {
+    //this.authenticationService.currentUserId.subscribe(id => {
+    //  this.userId = id;
+    //});
+  }
 
   /*onReservationCodeSubmit(): void {
     if (!this.reservationCode.trim()) {
@@ -64,11 +77,24 @@ export class DriverMenuComponent {
       return;
     }
 
-    if (this.reservationCode === 'ABCDE') {
-      this.showSuccessModal();
-    } else {
-      this.showErrorModal();
-    }
+    this.reservationService.getAll().subscribe({
+      next: (reservations) => {
+        const reservationArray = Array.isArray(reservations) ? reservations : [reservations];
+        const validReservation = reservationArray.find((r) =>
+          r.accessCode === this.reservationCode.trim()
+        );
+
+        if (validReservation) {
+          this.showSuccessModal();
+        } else {
+          this.showErrorModal();
+        }
+      },
+      error: (error) => {
+        console.error('Error al obtener reservaciones:', error);
+        this.showErrorModal();
+      }
+    });
   }
 
   private showSuccessModal(): void {
